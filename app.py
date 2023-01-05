@@ -18,6 +18,11 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 connect_db(app)
 db.create_all()
 
+@app.route('/')
+def home_page():
+    cupcakes = Cupcake.query.all()
+    return render_template('index.html', cupcakes = cupcakes)
+
 @app.route('/api/cupcakes')
 def get_cupcakes():
     all_cupcakes = [ cupcake.to_dict() for cupcake in Cupcake.query.all()]

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>home_page</title>
+</head>
+<body>
+    <h1>cupcakes !</h1>
+    <ul>
+        {% for cupcake in capcakes %}
+        <li>{{ cupcake.flavor }} {{ cupcake.image}}</li>
+        {% endfor %}
+    </ul>
+    <form id="new_cupcake" action="/api/cupcakes" method="post">
+        <input id="flavor" type="text" placeholder="flavor" name="flavor">
+        <input id="size" type="text" placeholder="size" name="size">
+         <input  id="rating" type="number" placeholder="rating" name="rating">
+         <input  id =" image" type="text" placeholder="image_url" name="image">
+        <input class="add_btn" type="submit" value="Add">
+
+
+
+
+
+    </form>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+        integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="static/cupcakes.js"></script>
+</body>
+</html>
