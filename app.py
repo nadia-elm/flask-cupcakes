@@ -3,8 +3,10 @@
 from flask import Flask,request,redirect,render_template,flash,jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db,Cupcake
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.app_context().push()
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:secret@localhost:5432/cupcakes'
@@ -39,7 +41,11 @@ def get_single_cupcake(id):
 
 @app.route('/api/cupcakes', methods=['POST'])
 def create_cupcake():
-    cupcake = Cupcake(flavor=request.json["flavor"],size= request.json["size"],rating= request.json["rating"], image= request.json["image"]or None)
+    if "image" in request.json:
+        image = request.json['image']
+    else:
+        image = None
+    cupcake = Cupcake(flavor=request.json["flavor"],size= request.json["size"],rating= request.json["rating"], image= image)
     db.session.add(cupcake)
     db.session.commit()
     response = jsonify(cupcake= cupcake.to_dict())

@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/app.css">
     <title>home_page</title>
 </head>
 <body>
     <h1>cupcakes !</h1>
-    <ul>
-        {% for cupcake in capcakes %}
-        <li>{{ cupcake.flavor }} {{ cupcake.image}}</li>
-        {% endfor %}
+    <ul id="cupcakes">
     </ul>
-    <form id="new_cupcake" action="/api/cupcakes" method="post">
+
+
+    <form>
         <input id="flavor" type="text" placeholder="flavor" name="flavor">
         <input id="size" type="text" placeholder="size" name="size">
          <input  id="rating" type="number" placeholder="rating" name="rating">
